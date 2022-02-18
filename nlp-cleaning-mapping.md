@@ -9,12 +9,11 @@ highlightTheme: "monokai"
 
 ## Contents
 
-- ML: production vs analysis
-- deep learning in practice = transfer learning
-- A brief history of NLP
-  - Q: how does this fit with the syllabus? ANS: that's the topic of the lecture next week. Could we make this a segway?
-- 
-
+- A brief intro to NLP
+- `Dinner Blackout` business case
+- **Part 1**: Clean HTML for ingredients and metadata
+- **Part 2**: Map ingredients to Coop's products
+- **Part 3**: Recipe rankings per Coop member
 
 
 ---
@@ -23,18 +22,43 @@ highlightTheme: "monokai"
 
 - Use one or more notebooks to show code examples
   - Can I reuse anything, or should I make something from scratch?
-
----
-
-# Part 0
-
-## A quick intro to NLP
+- A brief history of NLP
+  - Q: how does this fit with the syllabus? ANS: that's the topic of the lecture next week. Could we make this a segway?
+- 
 
 
 ---
 
+## A brief intro to NLP
 
-![](images/db_flow1.png)
+- NLP prior to Deep Learning
+- BERT - what is it?
+- Huggingface - a revolution?
+  - Deep learning in industry = transfer learning / finetuning?
+
+
+--
+
+Something NLP
+
+---
+
+## `Dinner Blackout` business case
+
+
+
+--
+
+Something Dinner Blackout
+
+Probably don't need many slides here. Possibly just 1, max 3.
+
+
+---
+
+<!-- .slide: data-fullscreen -->
+
+![](images/db_flow2.png)
 
 
 ---
@@ -96,7 +120,18 @@ Something part 2
 Something part 3
 
 
+---
 
+# Conclusion
+
+- a
+- b
+- c
+
+
+---
+
+# Questions?
 
 
 
