@@ -14,8 +14,8 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="http://localhost:51405/libs/reveal.js/4.1.3/reset.css">
-	<link rel="stylesheet" href="http://localhost:51405/libs/reveal.js/4.1.3/reveal.css">
+	<link rel="stylesheet" href="http://localhost:57975/libs/reveal.js/4.1.3/reset.css">
+	<link rel="stylesheet" href="http://localhost:57975/libs/reveal.js/4.1.3/reveal.css">
 
 	
 	
@@ -23,23 +23,23 @@
 
 	  <!-- highlight Theme -->
   	
-	  <link rel="stylesheet" href="http://localhost:51405/libs/highlight.js/11.3.1/styles/monokai.min.css">
+	  <link rel="stylesheet" href="http://localhost:57975/libs/highlight.js/11.3.1/styles/monokai.min.css">
 	
 	
 		
-	<link rel="stylesheet" href="http://localhost:51405/libs/reveal.js/4.1.3/plugin/chalkboard/style.css">
+	<link rel="stylesheet" href="http://localhost:57975/libs/reveal.js/4.1.3/plugin/chalkboard/style.css">
 	
 	
 	
-		<link rel="stylesheet" href="http://localhost:51405/libs/reveal.js/4.1.3/plugin/customcontrols/style.css">
+		<link rel="stylesheet" href="http://localhost:57975/libs/reveal.js/4.1.3/plugin/customcontrols/style.css">
 	
-	<link rel="stylesheet" href="http://localhost:51405/libs/styles/tasklist.css">
+	<link rel="stylesheet" href="http://localhost:57975/libs/styles/tasklist.css">
 
 
 
   <!-- Revealjs Theme -->
   
-  	<link rel="stylesheet" href="http://localhost:51405/libs/reveal.js/4.1.3/theme/white.css" id="theme">
+  	<link rel="stylesheet" href="http://localhost:57975/libs/reveal.js/4.1.3/theme/white.css" id="theme">
   
   
 
@@ -65,7 +65,77 @@
     
         <section >
             
-            <h2>BERT and NLP for cleaning and mapping data</h2>
+            <style>
+#left {
+	margin: 10px 0 15px 20px;
+	text-align: left;
+	float: left;
+	z-index:-10;
+	width:48%;
+	font-size: 0.7em;
+	line-height: 1.2; 
+}
+
+#right {
+	margin: 10px 0 15px 0;
+	float: right;
+	text-align: left;
+	z-index:-10;
+	width:48%;
+	font-size: 0.7em;
+	line-height: 1.2; 
+}
+
+#left-most {
+	margin: 10px 0 15px 20px;
+	text-align: left;
+	float: left;
+	z-index:-10;
+	width: 64%;
+	font-size: 0.85em;
+	line-height: 1.2; 
+}
+
+#right-less {
+	margin: 10px 0 15px 0;
+	float: right;
+	text-align: left;
+	z-index:-10;
+	width: 32%;
+	font-size: 0.85em;
+	line-height: 1.2; 
+}
+
+#left-less {
+	margin: 10px 0 15px 20px;
+	text-align: left;
+	float: left;
+	z-index:-10;
+	width:40%;
+	font-size: 0.85em;
+	line-height: 1.2; 
+}
+
+#right-most {
+	margin: 10px 0 15px 0;
+	float: right;
+	text-align: left;
+	z-index:-10;
+	width: 53%;
+	font-size: 0.85em;
+	line-height: 1.2; 
+}
+
+#smaller-font {
+  font-size: 0.6em;
+}
+
+#smallest-font {
+  font-size: 0.45em;
+}
+
+</style>
+<h2>BERT and NLP for cleaning and mapping data</h2>
 
             </section>
     
@@ -92,20 +162,11 @@
     
         <section >
             
-            <h2>Notes to self</h2>
-<ul>
-<li>Use one or more notebooks to show code examples
-<ul>
-<li>Can I reuse anything, or should I make something from scratch?</li>
-</ul>
-</li>
-<li>A brief history of NLP
-<ul>
-<li>Q: how does this fit with the syllabus? ANS: that’s the topic of the lecture next week. Could we make this a segway?</li>
-</ul>
-</li>
-<li></li>
-</ul>
+            <h2>Rasmus Nikolai Nes</h2>
+<p>Data Scientist @ Coop</p>
+<p>MSc Energy &amp; Environmental Engineering, NTNU</p>
+<p>Experience from Nordea and Schibsted prior to Coop.</p>
+<p><em>Disclaimer</em>: I am not an expert on any of the things I will present here today. The goal is to show an example of a Data Science project in real business setting with real data.</p>
 
             </section>
     
@@ -129,7 +190,74 @@
             </section>
         
             <section >
-                <p>Something NLP</p>
+                <h2>Natural Language Processing</h2>
+<blockquote>
+<p>The goal is a computer capable of “understanding” the contents of documents, including the contextual nuances of the language within them.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Natural_language_processing">Wikipedia</a></p>
+
+            </section>
+        
+            <section >
+                <h2>NLP history</h2>
+<ul>
+<li>Symbolic NLP (1950s – early 1990s)
+<ul>
+<li>Rule based</li>
+</ul>
+</li>
+<li>Statistical NLP (1990s – 2010s)
+<ul>
+<li>Web size data</li>
+<li>Unsupervised and (semi-)supervised learning</li>
+<li><strong>“Understanding” text still way off</strong></li>
+</ul>
+</li>
+<li>Neural NLP (present)
+<ul>
+<li>Vast data and compute</li>
+<li>Deep learning architectures</li>
+<li>Current state of the art: transformer architectures</li>
+<li><strong>“Understanding” text is getting closer</strong></li>
+</ul>
+</li>
+</ul>
+
+            </section>
+        
+            <section >
+                <h2>BERT</h2>
+<div id="left">
+<ul>
+<li><em>Bidirectional Encoder Representations from <strong>Transformers</strong></em></li>
+<li>Developed by Google in 2018</li>
+<li>Has quickly become a baseline for NLP experiments</li>
+<li><a href="https://arxiv.org/abs/2104.09617"><em>The National Library of Norway</em></a> published a pre-trained <strong>Norwegian</strong> BERT model
+<ul>
+<li>Trained on the <em>Colossal Norwegian Corpus</em> (109GB)</li>
+<li>Well suited for fine-tuning for specific NLP tasks</li>
+<li>Easily available via <a href="https://huggingface.co/NbAiLab/nb-bert-base">Hugging Face</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="right">
+<p><img src="images/bert_architecture.jpg" alt=""></p>
+</div>
+
+            </section>
+        
+            <section >
+                <h3>BERT/Hugging Face transfer learning</h3>
+<p>Easy to fine-tune BERT for different NLP tasks, like:</p>
+<ul>
+<li>Sentiment analysis</li>
+<li>Named Entity Recognition</li>
+<li>Next word prediction</li>
+<li>Next sentence prediction</li>
+<li><strong>Part-of-Speech tagging</strong></li>
+<li><strong>Sentence similarity</strong></li>
+</ul>
 
             </section>
         
@@ -142,14 +270,19 @@
     
     <section>
         <section >
-            <h2><code>Dinner Blackout</code> business case</h2>
+            <h3><code>Dinner Blackout</code> business case</h3>
+<p><mark>Do you know what to make for dinner this evening?</mark></p>
+<p><span class="fragment">We think many of us don’t - and we want to see if we can do anything to help you with that.</span></p>
+<p><span class="fragment"><strong><code>Dinner Blackout</code></strong>: can we use Coop members’ purchase history to make it easier and quicker for them to find a relevant recipe?</span></p>
 
             </section>
         
             <section >
-                <p>Something Dinner Blackout</p>
-<p>Probably don’t need many slides here. Possibly just 1, max 3.</p>
-
+                <h2>Product considerations</h2>
+<p>What is the main objective of the <code>Dinner Blackout</code> project?</p>
+<p><span class="fragment"><strong>Not</strong>: the algorithm ranking recipes (per member).</span></p>
+<p><span class="fragment"><strong>Rather</strong>: a <strong>product</strong> making it easier for our members to find a relevant recipe.</span></p>
+<aside class="notes">show app</aside> 
             </section>
         
 
@@ -159,11 +292,9 @@
 
 
     
-        <section data-fullscreen>
+        <section data-background="images/db_flow.png">
             
-            <!-- .slide: data-fullscreen -->
-<p><img src="images/db_flow2.png" alt=""></p>
-
+            <!-- .slide: data-background="images/db_flow.png" -->
             </section>
     
 
@@ -184,8 +315,233 @@
 
             </section>
         
+            <section data-background="images/db_flow_1.png">
+                <!-- .slide: data-background="images/db_flow_1.png" -->
+            </section>
+        
             <section >
-                <p>Something part 1</p>
+                <h2>Fine-tuning</h2>
+<div id="smaller-font">
+<ul>
+<li>Fine-tuning = transfer learning</li>
+<li>Essentially:
+<ul>
+<li>take a pretrained neural network model (Norwegian BERT in this case)</li>
+<li>add/replace some layers for the specific task at hand</li>
+<li>train model with new layers (and labels)</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><img src="images/transfer-learning.png" alt=""></p>
+
+            </section>
+        
+            <section data-fullscreen>
+                <h2>Example recipe</h2>
+<!-- .slide: data-fullscreen -->
+<div id="smaller-font">
+<p><a href="https://coop.no/mega/oppskrifter/kylling/rod-curry-med-kylling/">RØD CURRY MED KYLLING</a></p>
+<table>
+<thead>
+<tr>
+<th><strong>Ingredients list</strong></th>
+<th style="text-align:center">Clean A</th>
+<th style="text-align:center">Clean B</th>
+<th style="text-align:center">Clean C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>350 g kyllinglårfilet</td>
+<td style="text-align:center">kylling</td>
+<td style="text-align:center">kyllinglår</td>
+<td style="text-align:center">kyllingfilet</td>
+</tr>
+<tr>
+<td>150 g gresskar</td>
+<td style="text-align:center">gresskar</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>120 g grønne bønner</td>
+<td style="text-align:center">bønner</td>
+<td style="text-align:center">grønne bønner</td>
+</tr>
+<tr>
+<td>4 dl jasminris</td>
+<td style="text-align:center">ris</td>
+<td style="text-align:center">jasminris</td>
+</tr>
+<tr>
+<td>1 ss nøytral olje</td>
+<td style="text-align:center">olje</td>
+<td style="text-align:center">nøytral olje</td>
+</tr>
+<tr>
+<td>4 ss rød curry paste</td>
+<td style="text-align:center">curry</td>
+<td style="text-align:center">rød curry paste</td>
+<td style="text-align:center">curry paste</td>
+</tr>
+<tr>
+<td>2 1/2 dl kyllingbuljong</td>
+<td style="text-align:center">buljong</td>
+<td style="text-align:center">kyllingbuljong</td>
+<td style="text-align:center">kylling</td>
+</tr>
+<tr>
+<td>4 dl lett kokosmelk</td>
+<td style="text-align:center">kokosmelk</td>
+<td style="text-align:center">lett kokosmelk</td>
+</tr>
+<tr>
+<td>1 lime - revet skall av</td>
+<td style="text-align:center">lime</td>
+<td style="text-align:center">limeskall</td>
+<td style="text-align:center">revet skall av lime</td>
+</tr>
+<tr>
+<td>2 ts fiskesaus</td>
+<td style="text-align:center">fiskesaus</td>
+<td style="text-align:center">fisk</td>
+<td style="text-align:center">saus</td>
+</tr>
+<tr>
+<td>Koriander</td>
+<td style="text-align:center">koriander</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Rød chili - finhakket</td>
+<td style="text-align:center">chili</td>
+<td style="text-align:center">rød chili</td>
+</tr>
+<tr>
+<td>1 lime i båter</td>
+<td style="text-align:center">lime</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+            </section>
+        
+            <section data-fullscreen>
+                <h2>POS tagging</h2>
+<!-- .slide: data-fullscreen -->
+<div id="left">
+<ul>
+<li>
+<p>Transfer learning <em>on top</em> of the pretrained BERT model</p>
+</li>
+<li>
+<p>Identifies word types, e.g. <em>noun</em>, <em>adjective</em>, <em>pronoun</em>, etc.</p>
+</li>
+<li>
+<p>For the recipes, we’re interested in <strong>nouns</strong>.</p>
+</li>
+</ul>
+<h3>In this specific case:</h3>
+<ul>
+<li>Need to remove stopwords (<code>ts</code>, <code>dl</code>, etc.)</li>
+<li>Plenty of <code>regex</code> as well…</li>
+</ul>
+</div>
+<div id="left">
+<p><img src="images/pos_tagging_example.png" alt=""></p>
+</div>
+            </section>
+        
+            <section data-fullscreen>
+                <h2>Example of results</h2>
+<!-- .slide: data-fullscreen -->
+<div id="smallest-font">
+<p><a href="https://coop.no/mega/oppskrifter/kylling/rod-curry-med-kylling/">RØD CURRY MED KYLLING</a></p>
+<table>
+<thead>
+<tr>
+<th><strong>Ingredients list</strong></th>
+<th style="text-align:center">Clean A</th>
+<th style="text-align:center">Clean B</th>
+<th style="text-align:center">Clean C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>350 g kyllinglårfilet</td>
+<td style="text-align:center">kylling</td>
+<td style="text-align:center">kyllinglår</td>
+<td style="text-align:center">kyllingfilet</td>
+</tr>
+<tr>
+<td>150 g gresskar</td>
+<td style="text-align:center">gresskar</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>120 g grønne bønner</td>
+<td style="text-align:center">bønner</td>
+<td style="text-align:center">grønne bønner</td>
+</tr>
+<tr>
+<td>4 dl jasminris</td>
+<td style="text-align:center">ris</td>
+<td style="text-align:center">jasminris</td>
+</tr>
+<tr>
+<td>1 ss nøytral olje</td>
+<td style="text-align:center">olje</td>
+<td style="text-align:center">nøytral olje</td>
+</tr>
+<tr>
+<td>4 ss rød curry paste</td>
+<td style="text-align:center">curry</td>
+<td style="text-align:center">rød curry paste</td>
+<td style="text-align:center">curry paste</td>
+</tr>
+<tr>
+<td>2 1/2 dl kyllingbuljong</td>
+<td style="text-align:center">buljong</td>
+<td style="text-align:center">kyllingbuljong</td>
+<td style="text-align:center">kylling</td>
+</tr>
+<tr>
+<td>4 dl lett kokosmelk</td>
+<td style="text-align:center">kokosmelk</td>
+<td style="text-align:center">lett kokosmelk</td>
+</tr>
+<tr>
+<td>1 lime - revet skall av</td>
+<td style="text-align:center">lime</td>
+<td style="text-align:center">limeskall</td>
+<td style="text-align:center">revet skall av lime</td>
+</tr>
+<tr>
+<td>2 ts fiskesaus</td>
+<td style="text-align:center">fiskesaus</td>
+<td style="text-align:center">fisk</td>
+<td style="text-align:center">saus</td>
+</tr>
+<tr>
+<td>Koriander</td>
+<td style="text-align:center">koriander</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Rød chili - finhakket</td>
+<td style="text-align:center">chili</td>
+<td style="text-align:center">rød chili</td>
+</tr>
+<tr>
+<td>1 lime i båter</td>
+<td style="text-align:center">lime</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Results in:</strong></p>
+<p><img src="images/recipe_cleaned.png" alt=""></p>
 
             </section>
         
@@ -214,8 +570,30 @@
 
             </section>
         
+            <section data-background="images/db_flow_2.png">
+                <!-- .slide: data-background="images/db_flow_2.png" -->
+            </section>
+        
             <section >
-                <p>Something part 2</p>
+                <p>Contents:</p>
+<ul>
+<li>Fine-tuning 2 - a leap in Deep Learning productivity</li>
+<li>String similarity
+<ul>
+<li>Character-based vs vector space (read blog post again)</li>
+</ul>
+</li>
+<li>Show examples from notebook? Probably, it will be more concrete if they can see some examples from it
+<ul>
+<li>Show inputs and example input</li>
+</ul>
+</li>
+<li>This is a difficult problem
+<ul>
+<li>What is similarity in this case? Taste, perhaps?</li>
+</ul>
+</li>
+</ul>
 
             </section>
         
@@ -239,8 +617,29 @@
 
             </section>
         
+            <section data-background="images/db_flow_3.png">
+                <!-- .slide: data-background="images/db_flow_3.png" -->
+            </section>
+        
             <section >
-                <p>Something part 3</p>
+                <p>Contents:</p>
+<ul>
+<li>Idea: based on your purchase history, can improve ranking of recipes?
+<ul>
+<li>Have more than 400 recipes.</li>
+</ul>
+</li>
+<li>Not a “traditional” supervised learning problem
+<ul>
+<li>We don’t have any labels</li>
+</ul>
+</li>
+<li>Showcase the draft app?
+<ul>
+<li>Product considerations</li>
+</ul>
+</li>
+</ul>
 
             </section>
         
@@ -253,10 +652,27 @@
     
         <section >
             
+            <h1>Discussion</h1>
+<ul>
+<li>Data cleaning: ML-based vs human</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h1>Conclusion</h1>
 <ul>
-<li>a</li>
-<li>b</li>
+<li>Think about your data product.
+<ul>
+<li>Does it need any “fancy” data science?</li>
+</ul>
+</li>
+<li>Cleaning and mapping data can also benefit from ML</li>
 <li>c</li>
 </ul>
 
@@ -280,32 +696,32 @@
   </div>
 
   	
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/reveal.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/zoom/zoom.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/notes/notes.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/search/search.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/markdown/markdown.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/highlight/highlight.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/menu/menu.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/math/math.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/reveal.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/zoom/zoom.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/notes/notes.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/search/search.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/markdown/markdown.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/highlight/highlight.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/menu/menu.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/math/math.js"></script>
 
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/fullscreen/plugin.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/fullscreen/plugin.js"></script>
   
-  	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/animate/plugin.js"></script>
-  	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/animate/svg.min.js"></script>
+  	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/animate/plugin.js"></script>
+  	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/animate/svg.min.js"></script>
   
-  	 <!--	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/anything/plugin.js"></script> -->
+  	 <!--	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/anything/plugin.js"></script> -->
 
- <!--	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/audio-slideshow/plugin.js"></script>  -->
-<!--	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/audio-slideshow/recorder.js"></script>-->
-<!--	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/audio-slideshow/RecordRTC.js"></script>-->
+ <!--	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/audio-slideshow/plugin.js"></script>  -->
+<!--	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/audio-slideshow/recorder.js"></script>-->
+<!--	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/audio-slideshow/RecordRTC.js"></script>-->
 
 
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/customcontrols/plugin.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/embed-tweet/plugin.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/customcontrols/plugin.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/embed-tweet/plugin.js"></script>
 
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/chart/chart.min.js"></script>
-	<script src="http://localhost:51405/libs/reveal.js/4.1.3/plugin/chart/plugin.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/chart/chart.min.js"></script>
+	<script src="http://localhost:57975/libs/reveal.js/4.1.3/plugin/chart/plugin.js"></script>
 
   <script>
 
@@ -343,7 +759,7 @@
 			controlsLayout: 'bottom-right',
 			controlsBackArrows: 'faded',
 			progress: true,
-			slideNumber: false,
+			slideNumber: true,
 			//#showSlideNumber "all" "print" "speaker"
 			hash: true,//#  hash: false,
 			//# respondToHashChanges: true,
