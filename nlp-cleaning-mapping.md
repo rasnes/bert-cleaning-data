@@ -82,8 +82,10 @@ slideNumber: "true"
 
 ## Contents
 
-- A brief intro to NLP
+TODO: change order of NLP and business case
+
 - `Dinner Blackout` business case
+- A brief intro to NLP
 - **Part 1**: Clean HTML for ingredients and metadata
 - **Part 2**: Map ingredients to Coop's products
 - **Part 3**: Recipe rankings per Coop member
@@ -102,12 +104,36 @@ _Disclaimer_: I am not an expert on any of the things I will present here today.
 
 ---
 
-## A brief intro to NLP
+### `Dinner Blackout` business case
 
-- NLP prior to Deep Learning
-- BERT - what is it?
-- Huggingface - a revolution?
-  - Deep learning in industry = transfer learning / finetuning?
+==Do you know what to make for dinner this evening?==
+
+<span class="fragment">We think many of us don't - and we want to see if we can do anything to help you with that.</span>
+
+<span class="fragment">**`Dinner Blackout`**: can we use Coop members' purchase history to make it easier and quicker for them to find a relevant recipe?</span>
+
+<aside class="notes">
+Think about how you could solve this problem for a minute. 
+Potentially using data science.
+</aside> 
+
+--
+
+## Product considerations
+
+What is the main objective of the `Dinner Blackout` project?
+
+<span class="fragment">**Not**: the algorithm ranking recipes (per member).</span> 
+
+<span class="fragment">**Rather**: a **product** making it easier for our members to find a relevant recipe.</span> 
+
+<span class="fragment">**Current state**: Proof of Concept (POC), we want to test on our members if the idea has any promise.</span>
+
+<aside class="notes">show app</aside>
+
+---
+
+# A brief intro to NLP
 
 --
 
@@ -170,29 +196,6 @@ Easy to fine-tune BERT for different NLP tasks, like:
 - Next sentence prediction
 - **Part-of-Speech tagging**
 - **Sentence similarity**
-
----
-
-### `Dinner Blackout` business case
-
-==Do you know what to make for dinner this evening?==
-
-<span class="fragment">We think many of us don't - and we want to see if we can do anything to help you with that.</span>
-
-<span class="fragment">**`Dinner Blackout`**: can we use Coop members' purchase history to make it easier and quicker for them to find a relevant recipe?</span>
-
---
-
-## Product considerations
-
-What is the main objective of the `Dinner Blackout` project?
-
-<span class="fragment">**Not**: the algorithm ranking recipes (per member).</span> 
-
-<span class="fragment">**Rather**: a **product** making it easier for our members to find a relevant recipe.</span> 
-
-<aside class="notes">show app</aside> 
-
 
 ---
 
@@ -268,6 +271,8 @@ What is the main objective of the `Dinner Blackout` project?
 
 <div id="left">
 
+- POS = Part of Speech
+
 - Transfer learning _on top_ of the pretrained BERT model
 
 - Identifies word types, e.g. _noun_, _adjective_, _pronoun_, etc.
@@ -290,7 +295,7 @@ What is the main objective of the `Dinner Blackout` project?
 
 --
 
-## Example of results
+## Cleaning results
 
 <!-- .slide: data-fullscreen -->
 
@@ -350,6 +355,71 @@ Contents:
 - This is a difficult problem
   - What is similarity in this case? Taste, perhaps?
 
+--
+
+### Fine-tuning for sentence similarity
+
+- Fine-tune Norwegian BERT for vector-based sentence similarity
+- Use Python package `sentence_transformers`
+  - Performs _mean pooling_ on the `last_hidden_states` tensor in BERT model
+  - Less than 10 lines of code required 🤗
+
+**NB:** Norwegian BERT + fine-tuning is a *huge* productivity leap for utilising deep learning. 
+Just a few years ago the norm was to train the model from scratch with your own data!
+
+--
+
+## String similarity
+
+<div id="left">
+
+### Vector based
+
+![](images/word_vectors.png)
+
+Cosine distance between vectors
+
+E.g.: King - Man + Woman = Queen
+
+`strawberry` and `melon` are close
+
+</div>
+
+
+<div id="right">
+
+### Character based
+
+[python-string-similarity library](https://github.com/luozhouyang/python-string-similarity)
+
+Example metrics:
+- Levenshtein
+- Longest common subsequence
+- Normalized N-Gram distance
+
+`strawberry` and `strawberries` are close
+
+I have used both, as vector based sometimes is way off, e.g. `curry` and `curry paste`
+
+</div>
+
+<aside class="notes"> Show notebook: `gpq_export.ipynb` </aside>
+
+--
+
+## This is a difficult problem
+
+<div id="smaller-font">
+
+What is similarity in this case? Taste, perhaps? `Blomkål` <> `Blomkålris`?
+
+</div>
+
+<!-- .slide: data-fullscreen -->
+
+![](images/map_ings_prods.png)
+
+
 ---
 
 # Part 3
@@ -371,19 +441,23 @@ Contents:
 
 Contents:
 
-- Idea: based on your purchase history, can improve ranking of recipes?
+- Idea: based on your purchase history, can we improve ranking of recipes?
   - Have more than 400 recipes.
 - Not a "traditional" supervised learning problem
   - We don't have any labels
+  - Features: family or not, vegetarian or not
 - Showcase the draft app?
   - Product considerations
+
+--
+
+
 
 ---
 
 # Discussion
 
 - Data cleaning: ML-based vs human
-
 
 ---
 

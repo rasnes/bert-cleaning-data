@@ -146,9 +146,10 @@
         <section >
             
             <h2>Contents</h2>
+<p>TODO: change order of NLP and business case</p>
 <ul>
-<li>A brief intro to NLP</li>
 <li><code>Dinner Blackout</code> business case</li>
+<li>A brief intro to NLP</li>
 <li><strong>Part 1</strong>: Clean HTML for ingredients and metadata</li>
 <li><strong>Part 2</strong>: Map ingredients to Coop’s products</li>
 <li><strong>Part 3</strong>: Recipe rankings per Coop member</li>
@@ -176,16 +177,35 @@
     
     <section>
         <section >
-            <h2>A brief intro to NLP</h2>
-<ul>
-<li>NLP prior to Deep Learning</li>
-<li>BERT - what is it?</li>
-<li>Huggingface - a revolution?
-<ul>
-<li>Deep learning in industry = transfer learning / finetuning?</li>
-</ul>
-</li>
-</ul>
+            <h3><code>Dinner Blackout</code> business case</h3>
+<p><mark>Do you know what to make for dinner this evening?</mark></p>
+<p><span class="fragment">We think many of us don’t - and we want to see if we can do anything to help you with that.</span></p>
+<p><span class="fragment"><strong><code>Dinner Blackout</code></strong>: can we use Coop members’ purchase history to make it easier and quicker for them to find a relevant recipe?</span></p>
+<aside class="notes">
+Think about how you could solve this problem for a minute. 
+Potentially using data science.
+</aside> 
+            </section>
+        
+            <section >
+                <h2>Product considerations</h2>
+<p>What is the main objective of the <code>Dinner Blackout</code> project?</p>
+<p><span class="fragment"><strong>Not</strong>: the algorithm ranking recipes (per member).</span></p>
+<p><span class="fragment"><strong>Rather</strong>: a <strong>product</strong> making it easier for our members to find a relevant recipe.</span></p>
+<p><span class="fragment"><strong>Current state</strong>: Proof of Concept (POC), we want to test on our members if the idea has any promise.</span></p>
+<aside class="notes">show app</aside>
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h1>A brief intro to NLP</h1>
 
             </section>
         
@@ -259,30 +279,6 @@
 <li><strong>Sentence similarity</strong></li>
 </ul>
 
-            </section>
-        
-
-    </section>
-    
-
-
-
-    
-    <section>
-        <section >
-            <h3><code>Dinner Blackout</code> business case</h3>
-<p><mark>Do you know what to make for dinner this evening?</mark></p>
-<p><span class="fragment">We think many of us don’t - and we want to see if we can do anything to help you with that.</span></p>
-<p><span class="fragment"><strong><code>Dinner Blackout</code></strong>: can we use Coop members’ purchase history to make it easier and quicker for them to find a relevant recipe?</span></p>
-
-            </section>
-        
-            <section >
-                <h2>Product considerations</h2>
-<p>What is the main objective of the <code>Dinner Blackout</code> project?</p>
-<p><span class="fragment"><strong>Not</strong>: the algorithm ranking recipes (per member).</span></p>
-<p><span class="fragment"><strong>Rather</strong>: a <strong>product</strong> making it easier for our members to find a relevant recipe.</span></p>
-<aside class="notes">show app</aside> 
             </section>
         
 
@@ -433,6 +429,9 @@
 <div id="left">
 <ul>
 <li>
+<p>POS = Part of Speech</p>
+</li>
+<li>
 <p>Transfer learning <em>on top</em> of the pretrained BERT model</p>
 </li>
 <li>
@@ -454,7 +453,7 @@
             </section>
         
             <section data-fullscreen>
-                <h2>Example of results</h2>
+                <h2>Cleaning results</h2>
 <!-- .slide: data-fullscreen -->
 <div id="smallest-font">
 <p><a href="https://coop.no/mega/oppskrifter/kylling/rod-curry-med-kylling/">RØD CURRY MED KYLLING</a></p>
@@ -597,6 +596,56 @@
 
             </section>
         
+            <section >
+                <h3>Fine-tuning for sentence similarity</h3>
+<ul>
+<li>Fine-tune Norwegian BERT for vector-based sentence similarity</li>
+<li>Use Python package <code>sentence_transformers</code>
+<ul>
+<li>Performs <em>mean pooling</em> on the <code>last_hidden_states</code> tensor in BERT model</li>
+<li>Less than 10 lines of code required 🤗</li>
+</ul>
+</li>
+</ul>
+<p><strong>NB:</strong> Norwegian BERT + fine-tuning is a <em>huge</em> productivity leap for utilising deep learning.
+Just a few years ago the norm was to train the model from scratch with your own data!</p>
+
+            </section>
+        
+            <section >
+                <h2>String similarity</h2>
+<div id="left">
+<h3>Vector based</h3>
+<p><img src="images/word_vectors.png" alt=""></p>
+<p>Cosine distance between vectors</p>
+<p>E.g.: King - Man + Woman = Queen</p>
+<p><code>strawberry</code> and <code>melon</code> are close</p>
+</div>
+<div id="right">
+<h3>Character based</h3>
+<p><a href="https://github.com/luozhouyang/python-string-similarity">python-string-similarity library</a></p>
+<p>Example metrics:</p>
+<ul>
+<li>Levenshtein</li>
+<li>Longest common subsequence</li>
+<li>Normalized N-Gram distance</li>
+</ul>
+<p><code>strawberry</code> and <code>strawberries</code> are close</p>
+<p>I have used both, as vector based sometimes is way off, e.g. <code>curry</code> and <code>curry paste</code></p>
+</div>
+<aside class="notes"> Show notebook: `gpq_export.ipynb` </aside>
+            </section>
+        
+            <section data-fullscreen>
+                <h2>This is a difficult problem</h2>
+<div id="smaller-font">
+<p>What is similarity in this case? Taste, perhaps? <code>Blomkål</code> &lt;&gt; <code>Blomkålris</code>?</p>
+</div>
+<!-- .slide: data-fullscreen -->
+<p><img src="images/map_ings_prods.png" alt=""></p>
+
+            </section>
+        
 
     </section>
     
@@ -624,7 +673,7 @@
             <section >
                 <p>Contents:</p>
 <ul>
-<li>Idea: based on your purchase history, can improve ranking of recipes?
+<li>Idea: based on your purchase history, can we improve ranking of recipes?
 <ul>
 <li>Have more than 400 recipes.</li>
 </ul>
@@ -632,6 +681,7 @@
 <li>Not a “traditional” supervised learning problem
 <ul>
 <li>We don’t have any labels</li>
+<li>Features: family or not, vegetarian or not</li>
 </ul>
 </li>
 <li>Showcase the draft app?
@@ -641,6 +691,10 @@
 </li>
 </ul>
 
+            </section>
+        
+            <section >
+                
             </section>
         
 
