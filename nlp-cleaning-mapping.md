@@ -439,35 +439,31 @@ What is similarity in this case? Taste, perhaps? `Blomkål` <> `Blomkålris`?
 
 --
 
-Contents:
+### Recipe rankings per Coop member
 
 - Idea: based on your purchase history, can we improve ranking of recipes?
-  - Have more than 400 recipes.
+  - Possible now, since we have mapping<br> `products` <> `ingredients`
+  - We have more than 400 recipes.
 - Not a "traditional" supervised learning problem
-  - We don't have any labels
+  - We don't have any labels (we don't know what recipes members have made and like)
   - Features: family or not, vegetarian or not
-- Showcase the draft app?
-  - Product considerations
+- Product considerations
+  - UI/UX vs data _quality_ vs ranking algorithm
 
---
-
-
+<aside class="notes"> show app, talk around it </aside>
 
 ---
 
-# Discussion
+## Discussion/conclusion
 
-- Data cleaning: ML-based vs human
+<div style="font-size:0.9em">
 
----
-
-# Conclusion
-
-- Think about your data product.
-  - Does it need any "fancy" data science?
 - Cleaning and mapping data can also benefit from ML
-- c
+- Data cleaning: ML-based vs human vs human-in-the-loop
+- Think carefully about your end product - does it need any "fancy" data science?
+  - Maybe yes, but you should try without it first :)
 
+</div>
 
 ---
 

@@ -671,30 +671,27 @@ Just a few years ago the norm was to train the model from scratch with your own 
             </section>
         
             <section >
-                <p>Contents:</p>
+                <h3>Recipe rankings per Coop member</h3>
 <ul>
 <li>Idea: based on your purchase history, can we improve ranking of recipes?
 <ul>
-<li>Have more than 400 recipes.</li>
+<li>Possible now, since we have mapping<br> <code>products</code> &lt;&gt; <code>ingredients</code></li>
+<li>We have more than 400 recipes.</li>
 </ul>
 </li>
 <li>Not a “traditional” supervised learning problem
 <ul>
-<li>We don’t have any labels</li>
+<li>We don’t have any labels (we don’t know what recipes members have made and like)</li>
 <li>Features: family or not, vegetarian or not</li>
 </ul>
 </li>
-<li>Showcase the draft app?
+<li>Product considerations
 <ul>
-<li>Product considerations</li>
+<li>UI/UX vs data <em>quality</em> vs ranking algorithm</li>
 </ul>
 </li>
 </ul>
-
-            </section>
-        
-            <section >
-                
+<aside class="notes"> show app, talk around it </aside>
             </section>
         
 
@@ -706,30 +703,18 @@ Just a few years ago the norm was to train the model from scratch with your own 
     
         <section >
             
-            <h1>Discussion</h1>
+            <h2>Discussion/conclusion</h2>
+<div style="font-size:0.9em">
 <ul>
-<li>Data cleaning: ML-based vs human</li>
-</ul>
-
-            </section>
-    
-
-
-
-    
-        <section >
-            
-            <h1>Conclusion</h1>
+<li>Cleaning and mapping data can also benefit from ML</li>
+<li>Data cleaning: ML-based vs human vs human-in-the-loop</li>
+<li>Think carefully about your end product - does it need any “fancy” data science?
 <ul>
-<li>Think about your data product.
-<ul>
-<li>Does it need any “fancy” data science?</li>
+<li>Maybe yes, but you should try without it first :)</li>
 </ul>
 </li>
-<li>Cleaning and mapping data can also benefit from ML</li>
-<li>c</li>
 </ul>
-
+</div>
             </section>
     
 
